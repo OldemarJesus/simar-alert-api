@@ -15,8 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const process_1 = require("process");
 const app_1 = __importDefault(require("./app"));
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const PORT = (_a = process_1.env.PORT) !== null && _a !== void 0 ? _a : "3000";
+    const PORT = process_1.env.PORT || "3000";
     try {
         yield app_1.default.listen({ port: parseInt(PORT) });
     }
