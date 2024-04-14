@@ -1,8 +1,9 @@
 import Cache from 'file-system-cache';
-import cachedir from 'cachedir'
+// import cachedir from 'cachedir'
+import { tmpdir } from 'os'
 
 export default function () {
-    const cachedirs = cachedir("simar")
+    const cachedirs = tmpdir
     console.info("Storing cache at " + cachedirs)
     return Cache({
         basePath: cachedirs + "/.cache", // (optional) Path where cache files are stored (default).
