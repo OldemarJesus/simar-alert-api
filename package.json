@@ -4,8 +4,15 @@
   "description": "Project to extract critical outage alert from public website SIMAR.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "rimraf dist && tsc",
+    "start": "nodemon"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [
     "webscraping",
     "javascript",
@@ -17,6 +24,8 @@
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
