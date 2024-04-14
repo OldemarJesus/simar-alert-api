@@ -1,14 +1,19 @@
-import Cache from 'file-system-cache';
-// import cachedir from 'cachedir'
-import { tmpdir } from 'os'
+import Cache from 'node-cache'
+
+var CacheFactory = (function () {
+    var instance: Cache;
+    return {
+        getInstance: function () {
+            if (instance == null) {
+                instance = new Cache({ stdTTL: 3600, checkperiod: 300 });
+            }
+            return instance;
+        }
+    };
+})();
+
 
 export default function () {
-    const cachedirs = tmpdir
-    console.info("Storing cache at " + cachedirs)
-    return Cache({
-        basePath: cachedirs + "/.cache", // (optional) Path where cache files are stored (default).
-        ns: "my-namespace",   // (optional) A grouping namespace for items.
-        hash: "sha1",          // (optional) A hashing algorithm used within the cache key.
-        ttl: 3500               // (optional) A time-to-live (in secs) on how long an item remains cached.
-    });
+
+    return CacheFactory.getInstance()
 }
