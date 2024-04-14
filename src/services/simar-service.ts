@@ -18,7 +18,7 @@ export const getLastSimarAlerts = async () => {
     return alerts
 }
 
-export const getLastSimarAlertsFromCache = async () => {
+export const getLastSimarAlertsFromCache = async () : Promise<string[]> => {
     const cAlerts = await cacheService().get(SIMAR_ALERT_KEY)
 
     if (cAlerts == undefined) {
