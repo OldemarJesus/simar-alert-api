@@ -3,8 +3,8 @@ import App from "./app"
 
 
 const main = async () => {
-    const PORT = env.PORT ?? "3000";
-    
+    const PORT = env.PORT || "3000";
+
     try {
         await App.listen({ port: parseInt(PORT) })
     } catch (error) {
